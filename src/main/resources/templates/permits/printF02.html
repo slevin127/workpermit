@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Наряд-допуск № <span th:text="${permit.number}"></span></title>
+  <style>
+    body {
+      font-family: "Tahoma", serif;
+      font-size: 12px;
+      padding: 40px;
+    }
+    h2, h3 {
+      text-align: center;
+      margin: 0;
+    }
+.textUnderLine{
+  text-align: center;
+  font-size: 10px;
+  line-height: 0px;
+
+}
+
+    .underline1 {
+      display: inline-block;
+      border-bottom: 1px solid black;
+      min-width: 150px;
+    }
+    .underline2 {
+      display: inline-block;
+      border-bottom: 1px solid black;
+      min-width: 500px;
+    }
+    .underline3 {
+      display: inline-block;
+      border-bottom: 1px solid black;
+      min-width: 20px;
+    }
+
+    .section-title {
+      font-weight: bold;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    td, th {
+      border: 1px solid black;
+      padding: 5px;
+      vertical-align: top;
+    }
+    .no-border td {
+      border: none;
+      padding: 3px;
+      line-height: 35px;
+    }
+    .signature-line {
+      border-bottom: 1px solid black;
+      width: 100%;
+      display: inline-block;
+      height: 1em;
+    }
+    .noborder td {
+      border: none;
+      padding: 4px;
+
+    }
+
+    @media print {
+      button { display: none; }
+    }
+  </style>
+</head>
+<body onload="">
+
+<h2>НАРЯД-ДОПУСК № <span th:text="${permit.number}"></span></h2>
+<h3>НА ПРОИЗВОДСТВО РАБОТ ПОВЫШЕННОЙ ОПАСНОСТИ</h3>
+
+
+<div class="no-border">Наименование организации:</div>
+<div class="underline1" th:text="${permit.organizationCustomer}"></div>
+<div class="section-title">1. Наряд</div>
+
+<p>1.1 Руководителю работ: <span class="underline2"></span></p>
+<div class="textUnderLine"> <p><em>(должность, наименование подразделения, фамилия и инициалы)</em></p> </div>
+
+<p>1.2 Производителю работ: <span class="underline2"></span></p>
+<div class="textUnderLine"> <p><em>(должность, наименование подразделения, фамилия и инициалы)</em></p> </div>
+<p>С бригадой в составе <span class="underline3"></span> человек поручается произвести следующие работы:</p>
+<p style="border: 1px solid black; min-height: 80px; padding: 5px;" th:text="${permit.workDescription}"></p>
+
+<p>1.3 При подготовке и производстве работ обеспечить следующие меры безопасности:</p>
+<p style="border: 1px solid black; min-height: 100px; padding: 5px;" th:text="${permit.safetyMeasures}"></p>
+<hr>
+
+<p>1.4 Начало работ: <span class="underline3"></span> ч. <span class="underline3"></span> мин. «<span class="underline3"></span>»  20<span class="underline3"></span> г.</p>
+<p>1.5 Окончание работ: <span class="underline3"></span> ч. <span class="underline3"></span> мин. «<span class="underline3"></span>»  20<span class="underline3"></span> г.</p>
+
+
+<p>1.6 Наряд выдал: <span class="underline1"></span></p>
+
+<table class="no-border">
+  <tr>
+    <td>1.7 С условиями работы ознакомлены:</td>
+  </tr>
+  <tr>
+    <td>
+      Производитель работ <span class="underline1"></span> «<span class="underline3"></span>» 20<span class="underline3"></span> г.<br>
+      Допускающий <span class="underline1"></span> «<span class="underline3"></span>» 20<span class="underline3"></span> г.
+    </td>
+  </tr>
+</table>
+
+<div class="section-title">2. Допуск</div>
+
+<p>2.1 Инструктаж по охране труда по видам инструкций:</p>
+<p>проведён бригаде в составе <span class="underline3"></span> человек, в том числе:</p>
+
+<table>
+  <thead>
+  <tr>
+    <th>№ п/п</th>
+    <th>Фамилия, инициалы</th>
+    <th>Профессия</th>
+    <th>Подпись лица, получившего инструктаж</th>
+    <th>Подпись лица, проводившего инструктаж</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="i : ${#numbers.sequence(1,6)}">
+    <td th:text="${i}">1</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  </tbody>
+</table>
+
+
+</body>
+</html>

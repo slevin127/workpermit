@@ -1,0 +1,68 @@
+<!--
+Отображает список всех нарядов-допусков
+Содержит:
+Таблицу с th:each
+Ссылку на создание нового наряда
+-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Создание наряда-допуска</title>
+</head>
+<body>
+<h1>Новый наряд-допуск</h1>
+
+<form th:action="@{/permits}" th:object="${permit}" method="post">
+  <h3>Общие данные</h3>
+  <p>Номер наряда: <input type="text" th:field="*{number}" /></p>
+  <p>Тип наряда:
+    <select th:field="*{type}">
+      <option value="F01">Наряд-допуск (Ф-01)</option>
+      <option value="F02">Наряд-распоряжение (Ф-02)</option>
+      <option value="F03">Огневые работы (Ф-03)</option>
+    </select>
+  </p>
+
+  <p>Заказчик: <input type="text" th:field="*{organizationCustomer}" /></p>
+  <p>Исполнитель: <input type="text" th:field="*{organizationExecutor}" /></p>
+  <p>Место выполнения: <input type="text" th:field="*{workplace}" /></p>
+  <p>Описание работ: <input type="text" th:field="*{workDescription}" /></p>
+  <p>Дата начала: <input type="datetime-local" th:field="*{dateStart}" /></p>
+  <p>Дата окончания: <input type="datetime-local" th:field="*{dateEnd}" /></p>
+  <p>Режим работы: <input type="text" th:field="*{workMode}" /></p>
+  <p>Документы: <textarea th:field="*{documentRefs}"></textarea></p>
+  <p>Условия труда: <textarea th:field="*{workConditions}"></textarea></p>
+  <p>Меры безопасности: <textarea th:field="*{safetyMeasures}"></textarea></p>
+  <p>Статус: <input type="text" th:field="*{status}" /></p>
+
+  <br/>
+  <button type="submit">Сохранить наряд</button>
+
+<h3>Участники наряда</h3>
+
+<div>
+  <h4>Выдавший наряд</h4>
+  <input type="text" name="participants[0].fullName" placeholder="ФИО" />
+  <input type="text" name="participants[0].position" placeholder="Должность" />
+  <input type="hidden" name="participants[0].role" value="Выдавший наряд" />
+</div>
+
+<div>
+  <h4>Допускающий</h4>
+  <input type="text" name="participants[1].fullName" placeholder="ФИО" />
+  <input type="text" name="participants[1].position" placeholder="Должность" />
+  <input type="hidden" name="participants[1].role" value="Допускающий" />
+</div>
+
+<div>
+  <h4>Руководитель работ</h4>
+  <input type="text" name="participants[2].fullName" placeholder="ФИО" />
+  <input type="text" name="participants[2].position" placeholder="Должность" />
+  <input type="hidden" name="participants[2].role" value="Руководитель работ" />
+</div>
+</form>
+<p><a href="/permits">Назад к списку</a></p>
+</body>
+</html>

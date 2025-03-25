@@ -1,0 +1,46 @@
+<!--
+Форма для создания нового наряда
+Содержит:
+Поля для заполнения наряда
+Блоки для ввода участников
+th:field и name=participants[...] — для связи с DTO/моделью
+-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список нарядов</title>
+</head>
+<body>
+<h1>Список нарядов-допусков</h1>
+<table border="1">
+    <p>
+        <a href="/permits/create">Создать новый наряд</a>
+    </p>
+
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Номер</th>
+        <th>Заказчик</th>
+        <th>Исполнитель</th>
+        <th>Место работы</th>
+        <th>Статус</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="permit : ${permits}">
+        <td>
+            <a th:href="@{/permits/{id}(id=${permit.id})}" th:text="${permit.id}"></a>
+        </td>
+
+        <td th:text="${permit.number}"></td>
+        <td th:text="${permit.organizationCustomer}"></td>
+        <td th:text="${permit.organizationExecutor}"></td>
+        <td th:text="${permit.workplace}"></td>
+        <td th:text="${permit.status}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

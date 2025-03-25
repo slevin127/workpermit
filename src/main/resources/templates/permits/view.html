@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Наряд #[[${permit.number}]]</title>
+</head>
+<body>
+<h1>Наряд #[[${permit.number}]]</h1>
+
+<p><strong>Заказчик:</strong> <span th:text="${permit.organizationCustomer}"></span></p>
+<p><strong>Исполнитель:</strong> <span th:text="${permit.organizationExecutor}"></span></p>
+<p><strong>Место выполнения:</strong> <span th:text="${permit.workplace}"></span></p>
+<p><strong>Описание:</strong> <span th:text="${permit.workDescription}"></span></p>
+<p><strong>Дата начала:</strong> <span th:text="${permit.dateStart}"></span></p>
+<p><strong>Дата окончания:</strong> <span th:text="${permit.dateEnd}"></span></p>
+<p><strong>Режим работы:</strong> <span th:text="${permit.workMode}"></span></p>
+<p><strong>Документы:</strong> <span th:text="${permit.documentRefs}"></span></p>
+<p><strong>Условия труда:</strong> <span th:text="${permit.workConditions}"></span></p>
+<p><strong>Меры безопасности:</strong> <span th:text="${permit.safetyMeasures}"></span></p>
+<p><strong>Статус:</strong> <span th:text="${permit.status}"></span></p>
+
+<h3>Участники:</h3>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ФИО</th>
+        <th>Должность</th>
+        <th>Роль</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="p : ${permit.participants}">
+        <td th:text="${p.fullName}"></td>
+        <td th:text="${p.position}"></td>
+        <td th:text="${p.role}"></td>
+    </tr>
+    </tbody>
+</table>
+<hr/>
+<p>
+    <a th:href="@{/permits/{id}/edit(id=${permit.id})}">✏️ Редактировать</a> |
+    <a th:href="@{/permits/{id}/delete(id=${permit.id})}" onclick="return confirm('Удалить наряд?')">🗑️ Удалить</a> |
+    <a th:href="@{/permits/{id}/print(id=${permit.id})}" target="_blank">🖨️ Печать</a>
+</p>
+
+<p><a href="/permits">Назад к списку</a></p>
+</body>
+</html>
