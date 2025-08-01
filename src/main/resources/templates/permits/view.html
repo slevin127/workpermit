@@ -41,6 +41,10 @@
     <a th:href="@{/permits/{id}/edit(id=${permit.id})}">✏️ Редактировать</a> |
     <a th:href="@{/permits/{id}/delete(id=${permit.id})}" onclick="return confirm('Удалить наряд?')">🗑️ Удалить</a> |
     <a th:href="@{/permits/{id}/print(id=${permit.id})}" target="_blank">🖨️ Печать</a>
+    <a th:href="@{/permits/{id}/print/pdf(id=${permit.id})}" target="_blank">Скачать PDF</a>
+
+
+
 </p>
 
 <p><a href="/permits">Назад к списку</a></p>

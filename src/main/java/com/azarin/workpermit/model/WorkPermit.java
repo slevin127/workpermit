@@ -49,4 +49,67 @@ public class WorkPermit {
     @OneToMany(mappedBy = "workPermit", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PermitParticipant> participants;
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public String getOrganizationCustomer() {
+        return organizationCustomer;
+    }
+
+    public String getOrganizationExecutor() {
+        return organizationExecutor;
+    }
+
+    public String getWorkplace() {
+        return workplace;
+    }
+
+    public String getWorkDescription() {
+        return workDescription;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public LocalDateTime getDateStart() {
+        return dateStart;
+    }
+
+    public LocalDateTime getDateEnd() {
+        return dateEnd;
+    }
+
+    public String getWorkMode() {
+        return workMode;
+    }
+
+    public String getDocumentRefs() {
+        return documentRefs;
+    }
+
+    public String getWorkConditions() {
+        return workConditions;
+    }
+
+    public String getSafetyMeasures() {
+        return safetyMeasures;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public List<PermitParticipant> getParticipants() {
+        return participants;
+    }
 }
